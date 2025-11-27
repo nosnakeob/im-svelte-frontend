@@ -1,1 +1,10 @@
-<!-- 这个页面不会被渲染，因为服务端会重定向到 /login -->
+<script lang="ts">
+  import { onMount } from 'svelte';
+
+  onMount(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/login';
+    }
+  });
+</script>

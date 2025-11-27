@@ -1,38 +1,80 @@
-# sv
+# IM Svelte Frontend
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+基于 SvelteKit 5 和 Flowbite Svelte 构建的即时通讯前端应用。
 
-## Creating a project
+## 技术栈
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **SvelteKit 2.22** - 全栈 Web 框架
+- **Svelte 5** - 响应式 UI 框架（使用最新的 runes 语法）
+- **Flowbite Svelte** - UI 组件库
+- **Tailwind CSS 4** - 样式框架
+- **TypeScript** - 类型安全
+- **Vite 7** - 构建工具
 
-```sh
-# create a new project in the current directory
-npx sv create
+## 项目结构
 
-# create a new project in my-app
-npx sv create my-app
+```
+src/
+├── lib/
+│   └── components/
+│       └── MessageBubble.svelte # 消息气泡组件
+├── routes/
+│   ├── +layout.svelte           # 全局布局
+│   ├── +page.svelte             # 首页（欢迎页面）
+│   ├── login/
+│   │   └── +page.svelte         # 登录页面
+│   └── chat/
+│       ├── +layout.svelte       # 聊天室布局
+│       └── +page.svelte         # 聊天室页面
+└── app.css                      # 全局样式
 ```
 
-## Developing
+## 功能特性
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- ✅ 用户登录（模拟）
+- ✅ 聊天室界面
+- ✅ 消息发送和显示
+- ✅ 自动滚动到最新消息
+- ✅ 响应式设计
+
+## 开发
+
+安装依赖：
+
+```sh
+npm install
+```
+
+启动开发服务器：
 
 ```sh
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+项目将在 `http://localhost:80` 启动。
 
-To create a production version of your app:
+## 路由说明
+
+- `/` - 欢迎页面
+- `/login` - 登录页面（默认用户名：alice，密码：alice123）
+- `/chat` - 聊天室（需要登录）
+
+## 构建
+
+创建生产版本：
 
 ```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+预览生产构建：
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+npm run preview
+```
+
+## 注意事项
+
+- 当前登录功能为模拟实现，后端接口代码已注释保留
+- Token 存储在 localStorage 中
+- 首次启动可能需要等待依赖预构建（5-15 秒）
